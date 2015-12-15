@@ -10,6 +10,8 @@
 		7BA6A03B1C1F8C1000A41460 /* DaisyChain.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BA6A03A1C1F8C1000A41460 /* DaisyChain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7BA6A0421C1F8C1000A41460 /* DaisyChain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA6A0371C1F8C1000A41460 /* DaisyChain.framework */; };
 		7BA6A0471C1F8C1000A41460 /* DaisyChainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6A0461C1F8C1000A41460 /* DaisyChainTests.swift */; };
+		7BA6A0521C1F8C3600A41460 /* DaisyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6A0511C1F8C3600A41460 /* DaisyChain.swift */; };
+		7BA6A0531C1F8C3600A41460 /* DaisyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6A0511C1F8C3600A41460 /* DaisyChain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,7 @@
 		7BA6A0411C1F8C1000A41460 /* DaisyChainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaisyChainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BA6A0461C1F8C1000A41460 /* DaisyChainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaisyChainTests.swift; sourceTree = "<group>"; };
 		7BA6A0481C1F8C1000A41460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BA6A0511C1F8C3600A41460 /* DaisyChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaisyChain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,7 @@
 			children = (
 				7BA6A03A1C1F8C1000A41460 /* DaisyChain.h */,
 				7BA6A03C1C1F8C1000A41460 /* Info.plist */,
+				7BA6A0511C1F8C3600A41460 /* DaisyChain.swift */,
 			);
 			path = DaisyChain;
 			sourceTree = "<group>";
@@ -196,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BA6A0521C1F8C3600A41460 /* DaisyChain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BA6A0531C1F8C3600A41460 /* DaisyChain.swift in Sources */,
 				7BA6A0471C1F8C1000A41460 /* DaisyChainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +316,7 @@
 		7BA6A04C1C1F8C1000A41460 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -320,12 +327,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alikaragoz.DaisyChain;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		7BA6A04D1C1F8C1000A41460 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
