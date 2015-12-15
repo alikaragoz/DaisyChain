@@ -12,7 +12,7 @@ import UIKit
 /**
  Responsible for managing the queue of animations and their sequencing.
  */
-class DaisyChain {
+public class DaisyChain {
   
   private let queue: dispatch_queue_t
   private var semaphore: dispatch_semaphore_t
@@ -25,7 +25,7 @@ class DaisyChain {
   
   - returns: An initialised DaisyChain object.
   */
-  init() {
+  public init() {
     queue = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
     semaphore = dispatch_semaphore_create(0)
   }
@@ -59,7 +59,7 @@ class DaisyChain {
   /**
    Breaks the chain of execution
    */
-  internal func breakChain() {
+  public func breakChain() {
     self.broken = true
   }
   
@@ -74,7 +74,7 @@ class DaisyChain {
                           programmatically change any animatable properties of the views in your view hierarchy. This
                           block takes no parameters and has no return value. This parameter must not be `NULL`.
   */
-  internal func animateWithDuration(duration: NSTimeInterval, animations: () -> Void) {
+  public func animateWithDuration(duration: NSTimeInterval, animations: () -> Void) {
     self.broken = false
     performAndWait {
       UIView.animateWithDuration(duration, animations: animations, completion: { finished -> Void in
@@ -98,7 +98,7 @@ class DaisyChain {
                            is `0`, this block is performed at the beginning of the next run loop cycle. This parameter 
                            may be `NULL`.
    */
-  internal func animateWithDuration(duration: NSTimeInterval, animations: () -> Void, completion: ((Bool) -> Void)?) {
+  public func animateWithDuration(duration: NSTimeInterval, animations: () -> Void, completion: ((Bool) -> Void)?) {
     self.broken = false
     performAndWait {
       UIView.animateWithDuration(duration, animations: animations, completion: { finished -> Void in
@@ -126,7 +126,7 @@ class DaisyChain {
                            is `0`, this block is performed at the beginning of the next run loop cycle. This parameter 
                            may be `NULL`.
    */
-  internal func animateWithDuration(duration: NSTimeInterval, delay: NSTimeInterval, options: UIViewAnimationOptions, animations: () -> Void, completion: ((Bool) -> Void)?) {
+  public func animateWithDuration(duration: NSTimeInterval, delay: NSTimeInterval, options: UIViewAnimationOptions, animations: () -> Void, completion: ((Bool) -> Void)?) {
     self.broken = false
     performAndWait {
       UIView.animateWithDuration(duration, delay: delay, options: options, animations: animations, completion: { finished in
@@ -166,7 +166,7 @@ class DaisyChain {
                                        duration of the animation is `0`,this block is performed at the beginning of the
                                        next run loop cycle. This parameter may be `NULL`.
    */
-  internal func animateWithDuration(duration: NSTimeInterval, delay: NSTimeInterval, usingSpringWithDamping: CGFloat, initialSpringVelocity: CGFloat, options: UIViewAnimationOptions, animations: () -> Void, completion: ((Bool) -> Void)?) {
+  public func animateWithDuration(duration: NSTimeInterval, delay: NSTimeInterval, usingSpringWithDamping: CGFloat, initialSpringVelocity: CGFloat, options: UIViewAnimationOptions, animations: () -> Void, completion: ((Bool) -> Void)?) {
     self.broken = false
     performAndWait {
       UIView.animateWithDuration(duration, delay: delay, options: options, animations: animations, completion: { finished -> Void in

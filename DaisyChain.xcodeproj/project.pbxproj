@@ -74,9 +74,9 @@
 		7BA6A0391C1F8C1000A41460 /* DaisyChain */ = {
 			isa = PBXGroup;
 			children = (
+				7BA6A0511C1F8C3600A41460 /* DaisyChain.swift */,
 				7BA6A03A1C1F8C1000A41460 /* DaisyChain.h */,
 				7BA6A03C1C1F8C1000A41460 /* Info.plist */,
-				7BA6A0511C1F8C3600A41460 /* DaisyChain.swift */,
 			);
 			path = DaisyChain;
 			sourceTree = "<group>";
@@ -392,6 +392,7 @@
 				7BA6A04D1C1F8C1000A41460 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7BA6A04E1C1F8C1000A41460 /* Build configuration list for PBXNativeTarget "DaisyChainTests" */ = {
 			isa = XCConfigurationList;
@@ -400,6 +401,7 @@
 				7BA6A0501C1F8C1000A41460 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
