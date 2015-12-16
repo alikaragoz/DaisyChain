@@ -16,7 +16,12 @@ public class DaisyChain {
   
   private let queue: dispatch_queue_t
   private var semaphore: dispatch_semaphore_t
-  private(set) var broken: Bool = false
+  
+  /**
+   A boolean value which allows you to break a chain of execution by setting it to `true`. Setting it back to `false`
+   does not restart the chain of execution.
+   */
+  public var broken: Bool = false
   
   // MARK: Init
   
@@ -56,13 +61,6 @@ public class DaisyChain {
     dispatch_semaphore_signal(semaphore)
   }
   
-  /**
-   Breaks the chain of execution
-   */
-  public func breakChain() {
-    self.broken = true
-  }
-  
   // MARK: Animating
   
   /**
@@ -75,7 +73,6 @@ public class DaisyChain {
                           block takes no parameters and has no return value. This parameter must not be `NULL`.
   */
   public func animateWithDuration(duration: NSTimeInterval, animations: () -> Void) {
-    self.broken = false
     performAndWait {
       UIView.animateWithDuration(duration, animations: animations, completion: { finished -> Void in
         self.resume(nil, finished: finished)
@@ -99,7 +96,6 @@ public class DaisyChain {
                            may be `NULL`.
    */
   public func animateWithDuration(duration: NSTimeInterval, animations: () -> Void, completion: ((Bool) -> Void)?) {
-    self.broken = false
     performAndWait {
       UIView.animateWithDuration(duration, animations: animations, completion: { finished -> Void in
         self.resume(completion, finished: finished)
@@ -127,7 +123,6 @@ public class DaisyChain {
                            may be `NULL`.
    */
   public func animateWithDuration(duration: NSTimeInterval, delay: NSTimeInterval, options: UIViewAnimationOptions, animations: () -> Void, completion: ((Bool) -> Void)?) {
-    self.broken = false
     performAndWait {
       UIView.animateWithDuration(duration, delay: delay, options: options, animations: animations, completion: { finished in
         self.resume(completion, finished: finished)
@@ -167,7 +162,6 @@ public class DaisyChain {
                                        next run loop cycle. This parameter may be `NULL`.
    */
   public func animateWithDuration(duration: NSTimeInterval, delay: NSTimeInterval, usingSpringWithDamping: CGFloat, initialSpringVelocity: CGFloat, options: UIViewAnimationOptions, animations: () -> Void, completion: ((Bool) -> Void)?) {
-    self.broken = false
     performAndWait {
       UIView.animateWithDuration(duration, delay: delay, options: options, animations: animations, completion: { finished -> Void in
         self.resume(completion, finished: finished)

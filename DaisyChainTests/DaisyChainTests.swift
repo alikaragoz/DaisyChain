@@ -80,7 +80,7 @@ class DaisyChainTests: XCTestCase {
     daisyChain.animateWithDuration(0.1, animations: {}, completion: nil)
     
     daisyChain.animateWithDuration(0.1, animations: {}, completion: { _ in
-      self.daisyChain.breakChain()
+      self.daisyChain.broken = true
     })
     
     daisyChain.animateWithDuration(0.1,
