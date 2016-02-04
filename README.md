@@ -12,19 +12,19 @@ DaisyChain
 We all have seen or written code which looks like this:
 
 ```swift
-UIView.animateWithDuration(0.5, animations:
+UIView.animateWithDuration(0.5, animations: {
   view.center = CGPointMake(0.0, 0.0)
   }) { _ in
-    view.animateWithDuration(0.5, animations:
+    UIView.animateWithDuration(0.5, animations: {
       view.center = CGPointMake(100.0, 0.0)
       }) { _ in
-        UIView.animateWithDuration(0.5, animations:
+        UIView.animateWithDuration(0.5, animations: {
           view.center = CGPointMake(100.0, 100.0)
           }) { _ in
-            UIView.animateWithDuration(0.5, animations:
+            UIView.animateWithDuration(0.5, animations: {
               view.center = CGPointMake(0.0, 100.0)
               }) { _ in
-                UIView.animateWithDuration(0.5, animations:
+                UIView.animateWithDuration(0.5, animations: {
                   view.center = CGPointMake(0.0, 0.0)
                 })
             }
@@ -33,7 +33,7 @@ UIView.animateWithDuration(0.5, animations:
 }
 ```
 
-As you can see it can go pretty far, this is also know as the *callback hell*. It's not very flexible and hard to read.
+This can go pretty far, it is also know as the *callback hell*. It's not very flexible and hard to read.
 
 With **DaisyChain** the above code looks like this:
 
