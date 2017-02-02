@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "DaisyChain"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "Easy animation chaining."
   s.description      = <<-DESC
   DaisyChain is a micro framework which makes UIView animations chaining dead simple. It uses the exact same interface you are familiars with.
