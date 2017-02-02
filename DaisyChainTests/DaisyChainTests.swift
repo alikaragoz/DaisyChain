@@ -24,7 +24,7 @@ class DaisyChainTests: XCTestCase {
   
   func testSerialAnimation() {
     
-    let expectation = expectationWithDescription("Animation Expectations")
+    let expectation = self.expectation(description: "Animation Expectations")
     let view: UIView = UIView()
     var positions: [CGFloat] = []
     
@@ -55,13 +55,13 @@ class DaisyChainTests: XCTestCase {
         expectation.fulfill()
     })
     
-    waitForExpectationsWithTimeout(1.0, handler: nil)
+    waitForExpectations(timeout: 1.0, handler: nil)
     
   }
   
   func testSerialCompletion() {
     
-    let expectation = expectationWithDescription("Swift Expectations")
+    let expectation = self.expectation(description: "Swift Expectations")
     var counter: Int = 0
     
     daisyChain.animateWithDuration(2.0, animations: {}, completion: { _ in counter++ })
@@ -72,7 +72,7 @@ class DaisyChainTests: XCTestCase {
       expectation.fulfill()
     })
     
-    waitForExpectationsWithTimeout(5.0, handler: nil)
+    waitForExpectations(timeout: 5.0, handler: nil)
   }
   
   func testBreakableChain() {
