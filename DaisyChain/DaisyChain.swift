@@ -31,7 +31,7 @@ public class DaisyChain {
     - returns: An initialised DaisyChain object.
     */
     public init() {
-        queue = DispatchQueue(label: "DaisyChain", attributes: [])
+        queue = DispatchQueue(label: "DaisyChain")
         semaphore = DispatchSemaphore(value: 0)
     }
   
