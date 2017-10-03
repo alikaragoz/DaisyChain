@@ -24,11 +24,11 @@ class DaisyChainTests: XCTestCase {
   
   func testSerialAnimation() {
     
-    let expectation = expectationWithDescription("Animation Expectations")
+    let expectation = self.expectation(description: "Animation Expectations")
     let view: UIView = UIView()
     var positions: [CGFloat] = []
     
-    daisyChain.animateWithDuration(0.1,
+    daisyChain.animate(withDuration: 0.1,
       animations: {
         view.frame.origin.x = 10
       },
@@ -36,7 +36,7 @@ class DaisyChainTests: XCTestCase {
         positions.append(view.frame.origin.x)
     })
     
-    daisyChain.animateWithDuration(0.1,
+    daisyChain.animate(withDuration: 0.1,
       animations: {
         view.frame.origin.x = 20
       },
@@ -44,7 +44,7 @@ class DaisyChainTests: XCTestCase {
         positions.append(view.frame.origin.x)
     })
     
-    daisyChain.animateWithDuration(0.1,
+    daisyChain.animate(withDuration: 0.1,
       animations: {
         view.frame.origin.x = 30
       },
@@ -55,35 +55,35 @@ class DaisyChainTests: XCTestCase {
         expectation.fulfill()
     })
     
-    waitForExpectationsWithTimeout(1.0, handler: nil)
+    waitForExpectations(timeout: 1.0, handler: nil)
     
   }
   
   func testSerialCompletion() {
     
-    let expectation = expectationWithDescription("Swift Expectations")
+    let expectation = self.expectation(description: "Swift Expectations")
     var counter: Int = 0
     
-    daisyChain.animateWithDuration(2.0, animations: {}, completion: { _ in counter++ })
-    daisyChain.animateWithDuration(1.0, animations: {}, completion: { _ in counter++ })
-    daisyChain.animateWithDuration(0.5, animations: {}, completion: { _ in counter++ })
-    daisyChain.animateWithDuration(0.1, animations: {}, completion: { _ in
+    daisyChain.animate(withDuration: 2.0, animations: {}, completion: { _ in counter += 1 })
+    daisyChain.animate(withDuration: 1.0, animations: {}, completion: { _ in counter += 1 })
+    daisyChain.animate(withDuration: 0.5, animations: {}, completion: { _ in counter += 1 })
+    daisyChain.animate(withDuration: 0.1, animations: {}, completion: { _ in
       XCTAssert(counter == 3, "Animations did not call completion serially")
       expectation.fulfill()
     })
     
-    waitForExpectationsWithTimeout(5.0, handler: nil)
+    waitForExpectations(timeout: 5.0, handler: nil)
   }
   
   func testBreakableChain() {
     
-    daisyChain.animateWithDuration(0.1, animations: {}, completion: nil)
+    daisyChain.animate(withDuration: 0.1, animations: {}, completion: nil)
     
-    daisyChain.animateWithDuration(0.1, animations: {}, completion: { _ in
+    daisyChain.animate(withDuration: 0.1, animations: {}, completion: { _ in
       self.daisyChain.broken = true
     })
     
-    daisyChain.animateWithDuration(0.1,
+    daisyChain.animate(withDuration: 0.1,
       animations: {
         XCTAssert(false, "Animation block should not be executed")
       },
