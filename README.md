@@ -12,25 +12,25 @@ DaisyChain
 We all have seen or written code which looks like this:
 
 ```swift
-UIView.animateWithDuration(0.5, animations: {
-  view.center = CGPointMake(0.0, 0.0)
-  }) { _ in
-    UIView.animateWithDuration(0.5, animations: {
-      view.center = CGPointMake(100.0, 0.0)
-      }) { _ in
-        UIView.animateWithDuration(0.5, animations: {
-          view.center = CGPointMake(100.0, 100.0)
-          }) { _ in
-            UIView.animateWithDuration(0.5, animations: {
-              view.center = CGPointMake(0.0, 100.0)
-              }) { _ in
-                UIView.animateWithDuration(0.5, animations: {
-                  view.center = CGPointMake(0.0, 0.0)
+UIView.animate(withDuration: 0.5, animations: {
+    view.center = CGPoint(x: 0.0, y: 0.0)
+}, completion: { _ in
+    UIView.animate(withDuration: 0.5, animations: {
+        view.center = CGPoint(x: 100.0, y: 0.0)
+    }, completion: { _ in
+        UIView.animate(withDuration: 0.5, animations: {
+            view.center = CGPoint(x: 100.0, y: 100.0)
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.5, animations: {
+                view.center = CGPoint(x: 0.0, y: 100.0)
+            }, completion: { _ in
+                UIView.animate(0.5, animations: {
+                    view.center = CGPoint(x: 0.0, y: 0.0)
                 })
-            }
-        }
-    }
-}
+            })
+        })
+    })
+})
 ```
 
 This can go pretty far, it is also know as the *callback hell*. It's not very flexible and hard to read.
@@ -40,24 +40,24 @@ With **DaisyChain** the above code looks like this:
 ```swift
 let chain = DaisyChain()
 
-chain.animateWithDuration(0.5, animations: {
-  view.center = CGPointMake(0.0, 0.0)
+chain.animate(withDuration: 0.5, animations: {
+    view.center = CGPoint(x: 0.0, y: 0.0)
 })
 
-chain.animateWithDuration(0.5, animations: {
-  view.center = CGPointMake(100.0, 0.0)
+chain.animate(withDuration: 0.5, animations: {
+    view.center = CGPoint(x: 100.0, y: 0.0)
 })
 
-chain.animateWithDuration(0.5, animations: {
-  view.center = CGPointMake(100.0, 100.0)
+chain.animate(withDuration: 0.5, animations: {
+    view.center = CGPoint(x: 100.0, y: 100.0)
 })
 
-chain.animateWithDuration(0.5, animations: {
-  view.center = CGPointMake(0.0, 100.0)
+chain.animate(withDuration: 0.5, animations: {
+    view.center = CGPoint(x: 0.0, y: 100.0)
 })
 
-chain.animateWithDuration(0.5, animations: {
-  view.center = CGPointMake(0.0, 0.0)
+chain.animate(withDuration: 0.5, animations: {
+    view.center = CGPoint(x: 0.0, y: 0.0)
 })
 ```
 
