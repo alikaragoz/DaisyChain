@@ -71,13 +71,15 @@ public class DaisyChain {
      - parameter animations: A block object containing the changes to commit to the views. This is  where you
                              programmatically change any animatable properties of the views in your view hierarchy. This
                              block takes no parameters and has no return value. This parameter must not be `NULL`.
+     - returns:              The current DaisyChain instance.
     */
-    public func animate(withDuration duration: TimeInterval, animations: @escaping () -> Void) {
+    @discardableResult public func animate(withDuration duration: TimeInterval, animations: @escaping () -> Void) -> DaisyChain {
         performAndWait {
             UIView.animate(withDuration: duration, animations: animations, completion: { finished -> Void in
                 self.resume(nil, finished: finished)
             })
         }
+        return self
     }
   
     /**
@@ -94,13 +96,15 @@ public class DaisyChain {
                              actually finished before the completion handler was called. If the duration of the animation
                              is `0`, this block is performed at the beginning of the next run loop cycle. This parameter
                              may be `NULL`.
+     - returns:              The current DaisyChain instance.
     */
-    public func animate(withDuration duration: TimeInterval, animations: @escaping () -> Void, completion: ((Bool) -> Void)?) {
+    @discardableResult public func animate(withDuration duration: TimeInterval, animations: @escaping () -> Void, completion: ((Bool) -> Void)?) -> DaisyChain {
         performAndWait {
             UIView.animate(withDuration: duration, animations: animations, completion: { finished -> Void in
                 self.resume(completion, finished: finished)
             })
         }
+        return self
     }
   
     /**
@@ -121,13 +125,15 @@ public class DaisyChain {
                              actually finished before the completion handler was called. If the duration of the animation
                              is `0`, this block is performed at the beginning of the next run loop cycle. This parameter
                              may be `NULL`.
+     - returns:              The current DaisyChain instance.
     */
-    public func animate(withDuration duration: TimeInterval, delay: TimeInterval, options: UIViewAnimationOptions, animations: @escaping () -> Void, completion: ((Bool) -> Void)?) {
+    @discardableResult public func animate(withDuration duration: TimeInterval, delay: TimeInterval, options: UIViewAnimationOptions, animations: @escaping () -> Void, completion: ((Bool) -> Void)?) -> DaisyChain {
         performAndWait {
             UIView.animate(withDuration: duration, delay: delay, options: options, animations: animations, completion: { finished in
                 self.resume(completion, finished: finished)
             })
         }
+        return self
     }
   
     /**
@@ -160,12 +166,14 @@ public class DaisyChain {
                                          the animations actually finished before the completion handler was called. If the
                                          duration of the animation is `0`,this block is performed at the beginning of the
                                          next run loop cycle. This parameter may be `NULL`.
+     - returns:                          The current DaisyChain instance.
     */
-    public func animate(withDuration duration: TimeInterval, delay: TimeInterval, usingSpringWithDamping: CGFloat, initialSpringVelocity: CGFloat, options: UIViewAnimationOptions, animations: @escaping () -> Void, completion: ((Bool) -> Void)?) {
+    public func animate(withDuration duration: TimeInterval, delay: TimeInterval, usingSpringWithDamping: CGFloat, initialSpringVelocity: CGFloat, options: UIViewAnimationOptions, animations: @escaping () -> Void, completion: ((Bool) -> Void)?) -> DaisyChain {
         performAndWait {
             UIView.animate(withDuration: duration, delay: delay, options: options, animations: animations, completion: { finished -> Void in
                 self.resume(completion, finished: finished)
             })
         }
+        return self
     }
 }
