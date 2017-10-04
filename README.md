@@ -63,6 +63,24 @@ chain.animate(withDuration: 0.5, animations: {
 
 As you can the the code has been flattened, this allows you to easily modify the order of the steps or the addition of new steps.
 
+Or if you would prefer your code to be more succinct:
+
+```swift
+let chain = DaisyChain()
+
+chain.animate(withDuration: 0.5, animations: {
+    view.center = CGPoint(x: 0.0, y: 0.0)
+}).animate(withDuration: 0.5, animations: {
+    view.center = CGPoint(x: 100.0, y: 0.0)
+}).animate(withDuration: 0.5, animations: {
+    view.center = CGPoint(x: 100.0, y: 100.0)
+}).animate(withDuration: 0.5, animations: {
+    view.center = CGPoint(x: 0.0, y: 100.0)
+}).animate(withDuration: 0.5, animations: {
+    view.center = CGPoint(x: 0.0, y: 0.0)
+})
+```
+
 #### Breakable chains
 
 **DaisyChain** also adds a simple way to break animation sequences, simply set the `broken` property to `true` to break a chain:
