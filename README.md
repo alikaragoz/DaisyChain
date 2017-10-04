@@ -6,7 +6,7 @@
 DaisyChain
 ----------
 
-**DaisyChain** is a micro framework which makes UIView animations chaining dead simple. It uses the exact same interface you are familiars with.
+**DaisyChain** is a micro framework which makes UIView animations chaining dead simple. It uses the exact same interface you are familiar with.
 
 #### Chaining made simple
 We all have seen or written code which looks like this:
@@ -33,9 +33,9 @@ UIView.animate(withDuration: 0.5, animations: {
 })
 ```
 
-This can go pretty far, it is also know as the *callback hell*. It's not very flexible and hard to read.
+This can go pretty far, it is also known as *callback hell*. It's not very flexible and hard to read.
 
-With **DaisyChain** the above code looks like this:
+With **DaisyChain** we can rewrite that same code like this:
 
 ```swift
 let chain = DaisyChain()
@@ -61,16 +61,16 @@ chain.animate(withDuration: 0.5, animations: {
 })
 ```
 
-As you can the the code looks more flat, it allows you to easy modify orders or add new steps.
+As you can the the code has been flattened, this allows you to easily modify the order of the steps or the addition of new steps.
 
 #### Breakable chains
 
-**DaisyChain** also adds a simple way to break animation sequences, simply set the `broken` property to `yes` to break a chain:
+**DaisyChain** also adds a simple way to break animation sequences, simply set the `broken` property to `true` to break a chain:
 ```swift
 chain.broken = true
 ```
 
-To continue chaining animation, you'll need to put it back to `false` or create a new chain.
+To continue chaining animations, you'll need to change it back to `false` or create a new chain.
 
 #### Setting up with CocoaPods
 
