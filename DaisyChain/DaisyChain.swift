@@ -168,7 +168,7 @@ public class DaisyChain {
                                          next run loop cycle. This parameter may be `NULL`.
      - returns:                          The current DaisyChain instance.
     */
-    public func animate(withDuration duration: TimeInterval, delay: TimeInterval, usingSpringWithDamping: CGFloat, initialSpringVelocity: CGFloat, options: UIViewAnimationOptions, animations: @escaping () -> Void, completion: ((Bool) -> Void)?) -> DaisyChain {
+    @discardableResult public func animate(withDuration duration: TimeInterval, delay: TimeInterval, usingSpringWithDamping: CGFloat, initialSpringVelocity: CGFloat, options: UIViewAnimationOptions, animations: @escaping () -> Void, completion: ((Bool) -> Void)?) -> DaisyChain {
         performAndWait {
             UIView.animate(withDuration: duration, delay: delay, options: options, animations: animations, completion: { finished -> Void in
                 self.resume(completion, finished: finished)
